@@ -1,0 +1,8 @@
+typings/
+node_modules/
+*.js
+*.js.map
+.idea
+*.log
+!static_files/js/*.js
+!config.js
