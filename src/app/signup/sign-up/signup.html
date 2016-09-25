@@ -1,0 +1,97 @@
+<div class="about-page">
+    <div class="text-vcenter">
+        <div class="panel panel-success">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <div *ngIf="error" class="panel-heading">
+                        {{error}}
+                        {{error['password1']}}
+                        <p class="panel-title" style="font-size: 2.0em">Please Register to use TumaCredo</p>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" (submit)="signup($event, username.value, email.value, password1.value, password2.value)" id="register-form" #heroForm="ngForm" >
+
+                            <div *ngIf="username_error" class="alert alert-dismissable alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                                <p>{{username_error}}</p>
+
+                            </div>
+
+                            <div class="form-group ">
+                                <input type="text" name="username"  #username id="username" class="form-control input-sm"
+                                       placeholder="Username" required>
+
+                            </div>
+
+                            <div *ngIf="email_error" class="alert alert-dismissable alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                                <p>{{email_error}}</p>
+
+                            </div>
+
+                            <div class="form-group ">
+                                <input type="email" name="email" #email id="email" class="form-control input-sm"
+                                       placeholder="Email Address" required>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div *ngIf="non_field_errors" class="alert alert-dismissable alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                                    <p>{{non_field_errors}}</p>
+
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div *ngIf="password1_error" class="alert alert-dismissable alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                                        <p>{{password1_error}}</p>
+
+                                    </div>
+                                    <div class="form-group ">
+                                        <input type="password" #password1 name="password1" id="id_password1"
+                                               class="form-control input-sm" placeholder="Password" required>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div *ngIf="password2_error" class="alert alert-dismissable alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                                        <p>{{password2_error}}</p>
+
+                                    </div>
+                                    <div class="form-group ">
+                                        <input type="password" #password2 name="password2" id="id_password2"
+                                               class="form-control input-sm" placeholder="Confirm Password" required>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="checkbox" for="tns"><input type="checkbox" required (onChange)="activate_button($event)" value="" id="agree">
+                                </label>
+                                <b id="tns">I have read and I agree to the  <a (click)="terms_conditions($event)"> terms and conditions</a> of TumaCredo.com</b>
+                            </div>
+                            <input *ngIf="!load_spinner" [disabled]="!heroForm.form.valid" id="registerBtn" type="submit" value="Register"
+                                   class="btn btn-primary btn-group-justified">
+                            <i *ngIf="load_spinner" class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+
+
+                        </form>
+                        <p></p>
+                        <p>If you already have an account with us click <a (click)="login($event)">here</a> to
+                            login
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+#information {
+    background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+    display: table;
+    height: 800px;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#information .panel {
+    opacity: 0.85;
+    background-color: black;
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+#information p {
+    color: white;
+    font-size: 0.8em;
+
+}
+
+#information .row .col-lg-10 {
+    margin-left: 5px;
+}
+
+#information img {
+    display: inline-block;
+    font-size: 60px;
+    height: 140px;
+    line-height: 140px;
+    text-align: center;
+    vertical-align: middle;
+    width: 140px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    #information {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 350px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #information .panel {
+        opacity: 0.85;
+        background-color: black;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    #information h3 {
+        color: white;
+        font-size: medium;
+        margin-top: 0px;
+    }
+
+    #information p {
+        color: white;
+        font-size: x-small;
+        margin-bottom: 10px;
+    }
+
+    /*#information .row .col-lg-10 {*/
+    /*margin-left: 5px;*/
+    /*}*/
+
+    #information img {
+        display: inline-block;
+        font-size: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        vertical-align: middle;
+        width: 60px;
+        color: white;
+        margin-bottom: 10px;
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    #information {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 300px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #information .panel {
+        opacity: 0.85;
+        background-color: black;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    #information h3 {
+        color: white;
+        font-size: medium;
+        margin-top: 0;
+    }
+
+    #information p {
+        color: white;
+        font-size: x-small;
+        margin-bottom: 10px;
+    }
+
+    #information img {
+        display: inline-block;
+        font-size: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        vertical-align: middle;
+        width: 60px;
+        color: white;
+        margin-bottom: 10px;
+    }
+}

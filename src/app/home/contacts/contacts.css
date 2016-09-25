@@ -1,0 +1,18 @@
+.list-group-item{
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+
+.list-group-item:focus{
+    color: black;
+    border-radius: 5px;
+    border: solid #0f7595;
+}
+
+.spinnerDiv2 {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}

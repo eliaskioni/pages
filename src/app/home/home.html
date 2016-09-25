@@ -1,0 +1,99 @@
+
+<div id="wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand" id="dashboard-logo">TumaCredo</a>
+        </div>
+        <ul class="nav navbar-right top-nav" id="dash-menu">
+            <li ><a a routerLink="/home/billing" id="buy-credits">
+                <span *ngIf="userData.balance != undefined" class="badge">KES. {{userData.balance}}<i class="fa fa-fw fa-shopping-cart "></i> Buy more credits</span>
+                <span *ngIf="userData.balance == undefined" ><i style="color: #9c0033" class="fa fa-spinner fa-pulse fa-2x  "></i></span>
+            </a>
+            </li>
+            <li><a routerLink="/homepage/about_us" id="about-link">About Us</a></li>
+            <li><a routerLink="/homepage/why_us" id="whyus-link">Why Us?</a></li>
+            <li><a routerLink="/homepage/how_to" id="howto-link">How To</a></li>
+            <li><a routerLink="/homepage/contact_us" id="contact-link">Contact Us</a></li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="username"><i class="fa fa-user"></i>
+                    {{username| uppercase}}<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a routerLink="/settings/profile" id="settings"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a (click)="logout()" id="logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="dash-side-menu">
+
+            <ul class="nav navbar-nav side-nav">
+                <li><a routerLink="/home/dashboard" id="dashboard">
+                    <i class="fa fa-dashboard"></i> Dashboard</a>
+                </li>
+                <!--<li>-->
+                <!--<a [routerLink]="['Settings']" id="setting"><i class="fa fa-fw fa-gear"></i> Profile Setting</a>-->
+                <!--</li>-->
+                <li><a routerLink="/home/contacts" id="contacts">
+                    <i class="fa fa-users"></i> Contacts</a>
+                </li>
+                <li><a routerLink="/home/billing" id="billing">
+                    <i class="fa fa-credit-card"></i> Billing</a></li>
+                <hr>
+                <li>
+                    <a href="javascript:;" data-target="#airtime-menu" id="airtime"><i
+                            class="fa fa-fw fa-paper-plane-o"></i> Airtime Top Up <i class="fa fa-chevron-down"></i></a>
+                    <ul id="airtime-menu" class="show">
+                        <li><a routerLink="/home/airtime/quick-topup"><i class="fa fa-fw fa-flash"></i> Quick Top Up</a>
+                        </li>
+                        <li><a routerLink="/home/airtime/bulk-topup"><i class="fa fa-fw fa-users"></i> Bulk Top Up</a></li>
+                        <li><a routerLink="/home/airtime/excel-topup"><i class="fa fa-fw fa-file-excel-o"></i> Bulk Excel
+                            Top Up</a></li>
+                        <li><a routerLink="/home/airtime/airtime-reports"><i class="fa fa-fw fa-bar-chart"></i> View Top Up
+                            Report</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#sms-menu" id="sms"><i
+                            class="fa fa-flag fa-envelope "></i> SMS <i class="fa fa-chevron-down"></i></a>
+                    <ul id="sms-menu" class="show">
+                        <li><a routerLink="/home/sms/quick-sms"><i class="fa fa-flag fa-flash"></i> Send Quick SMS</a></li>
+                        <li><a routerLink="/home/sms/excel-sms"><i class="fa fa-flag fa-file-excel-o"></i> Send
+                            Using
+                            Excel</a></li>
+                        <li><a routerLink="/home/sms/contacts-sms"><i class="fa fa-flag fa-weixin"></i> Send From
+                            Contacts</a></li>
+                        <li><a routerLink="/home/sms/reports-sms"><i class="fa fa-flag fa-bar-chart "></i> View SMS
+                            Report</a></li>
+                    </ul>
+                </li>
+
+                <li><a routerLink="/home/accounting"><i class="fa fa-wpforms" aria-hidden="true"></i> Accounting</a></li>
+
+            </ul>
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+    <div id="page-content-wrapper">
+        <div class="container-fluid dashcontent">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

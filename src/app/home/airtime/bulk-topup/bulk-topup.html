@@ -1,0 +1,70 @@
+<div [ngSwitch]="isRequesting">
+    <div *ngSwitchCase="true">
+        <div class="spinnerDiv2">
+            <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-muted"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div *ngSwitchCase="false">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <h1 class="page-header">
+                    Bulk Topup
+                    <small>Send airtime instantly to one or more numbers</small>
+                </h1>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 column">
+                <div class="alert alert-dismissable alert-danger" [hidden]="!index_errors">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                    <p>{{error_index}}</p>
+
+                </div>
+                <form class="table-responsive">
+                    <div class="panel panel-body">
+                        <div class="alert alert-dismissable alert-danger" [hidden]="!amount_error">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <p>{{amount_error}}</p>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Names</th>
+                                <th>Phone Number</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="info" *ngFor="let choice of topup; let i = index">
+                                <td>
+                                    <input [(ngModel)]="choice.first_name" [ngModelOptions]="{standalone: true}" maxlength="255" type="text"/>
+                                </td>
+                                <td>
+                                    <label></label>
+                                    <input [(ngModel)]="choice.phone_number" [ngModelOptions]="{standalone: true}" maxlength="255" type="text" required pattern="^(?:07|\+2547)[0-9]{8}$"/>
+                                </td>
+                                <td>
+                                    <label></label>
+                                    <input (keyup)="total_transaction()" [(ngModel)]="choice.amount" [ngModelOptions]="{standalone: true}" maxlength="20" type="number"/>
+                                </td>
+                                <td><a class="delete-row" (click)="removeChoice(i)">remove</a></td>
+                            </tr>
+                            <hr>
+                            <a class="add-row" (click)="addNewChoice()">add another</a>
+                            <div class="alert alert-info" role="alert" [hidden]="!show_totals" >
+                               Total amount you are sending {{totals}}
+                            </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+                <button id="bulk-send" (click)="sendBulkAirtime()" class='form-control btn btn-primary submit-button' type="submit">Send Airtime
+            </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="row" style="margin-top: 5%">
+    <div class="col-lg-12">
+        <form (submit)="update_func($event, username.value, email.value)">
+
+            <div class="alert alert-dismissable alert-danger" [hidden]="!error_alert">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <p>{{error_alert}}</p>
+
+            </div>
+            <div class="alert alert-dismissable alert-danger" [hidden]="!success_alert">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <p>Reset successful</p>
+
+            </div>
+            <fieldset class="module aligned wide">
+                <div class="form-group">
+
+                    <label class="label label-info"><label for="id_username">Username:</label></label>
+                    <input id="id_username" name="username" type="text" #username class="form-control" value={{res_username}} >
+                </div>
+                <!--<div class="form-group">-->
+
+                    <!--<label class="label label-info"><label for="id_first_name">Firstname:</label></label>-->
+                    <!--<input id="id_first_name" name="username" type="text" #firstname class="form-control" value={{res_firstname}} >-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+
+                    <!--<label class="label label-info"><label for="id_last_name">Lastname:</label></label>-->
+                    <!--<input id="id_last_name" name="username" type="text" #lastname class="form-control" value={{res_lastname}} >-->
+                <!--</div>-->
+
+                <div class="form-group">
+
+                    <label class="label label-info"><label for="id_email">Email:</label></label>
+                    <input id="id_email" name="username" type="text" #email class="form-control" value={{res_email}} >
+                </div>
+            </fieldset>
+
+            <div class="submit-row">
+                <input type="submit" value="Update my profile" class="btn btn-success"/>
+            </div>
+        </form>
+    </div>
+</div>

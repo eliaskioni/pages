@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Names</th>
+        <th>Phone Number</th>
+        <th>Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="info" *ngFor="let choice of topup; let i = index">
+        <td>
+
+            <input [(ngModel)]="choice.first_name" maxlength="255" type="text"/>
+        </td>
+        <td [ngClass]="{'has-error': phone_number_error}">
+            <label class="badge-label label-danger" [hidden]="!phone_number_error">{{phone_number_error}}</label>
+            <input [(ngModel)]="choice.phone_number" maxlength="255" type="text"/>
+        </td>
+        <td [ngClass]="{'has-error': amount_error}">
+            <label class="control-label"
+                   [hidden]="!amount_error">{{amount_error}}</label>
+            <input [(ngModel)]="choice.amount" maxlength="20" type="number"/>
+        </td>
+        <td><a class="delete-row" (click)="removeChoice(i)">remove</a></td>
+    </tr>
+    <a class="add-row" (click)="addNewChoice()">add another</a>
+    </tbody>
+</table>

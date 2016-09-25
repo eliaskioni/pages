@@ -1,0 +1,511 @@
+<div *ngIf="contacts_switch" class="row">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+            <h1 class="page-header">
+                Contacts
+                <small>All your contacts</small>
+            </h1>
+            <notifications></notifications>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <form id="contact-form" #form #theForm="ngForm">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+                    <div class="row">
+                        <div *ngIf="!isSMS" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="btn-group">
+                                <a routerLink="/home/contacts/add-contact" class="btn btn-success"><span class="glyphicon glyphicon-user"
+                                                                                                id="add-contact"></span> Add
+                                    contact</a>
+                                <a routerLink="/home/contacts/add-contacts-excel"class="btn btn-success"><span
+                                        class="fa fa-flag fa-file-excel-o" id="use-excel"></span> Add Contacts Using Excel
+                                    Sheet</a>
+                                <a routerLink="/home/contacts/add-group" class="btn btn-primary"><span class="glyphicon glyphicon-plus"
+                                                                                             id="add-group"></span> Add
+                                    group</a>
+                            </div>
+                        </div>
+                        <hr class="featurette-divider">
+                        <div class="col-lg-12 col-md-12 col-sm-8 col-xs-8" style="margin-bottom: 10px;">
+                            <div [ngSwitch]="buttonStateEnabled" class="btn-group">
+                                <div *ngSwitchCase="true">
+                                    <button *ngIf="!isSMS" (click)="sendAirtime($event)" type="submit" id="submitBtn" class="btn btn-info"><span
+                                            class="glyphicon glyphicon-send"></span> Send Airtime
+                                    </button>
+                                    <button (click)="sendSMS($event)" type="submit" id="SmsSubmitBtn" class="btn btn-info"><span
+                                            class="glyphicon glyphicon-envelope"></span> SendSMS
+                                    </button>
+                                    <h3 id="special-h3" style="display:inline; color:maroon;
+                          margin-left: 50px"></h3>
+                                </div>
+                                <div *ngSwitchCase="false">
+                                    <button *ngIf="!isSMS" disabled (click)="sendAirtime($event)" type="submit" id="submitBtn" class="btn btn-info"><span
+                                            class="glyphicon glyphicon-send"></span> Send Airtime
+                                    </button>
+                                    <button disabled (click)="sendSMS($event)" type="submit" id="SmsSubmitBtn" class="btn btn-info"><span
+                                            class="glyphicon glyphicon-envelope"></span> SendSMS
+                                    </button>
+                                    <h3 id="special-h3" style="display:inline; color:maroon;
+                          margin-left: 50px"></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <!--<input type="text" class="search-query form-control" placeholder="Enter name or number to search..." name="search" id="search">-->
+                    <search-box (update)="search_term=$event"></search-box>
+                </div>
+            </div>
+            <hr class="featurette-divider">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <div class="panel panel-default">
+                        <div class="table-container table-responsive">
+                            <table class="table table-striped">
+                                <thead class="panel panel-heading">
+                                <tr>
+                                    <th><input id="checkall" type="checkbox" #checkall (change)="toggleCheckbox(contactsList)"></th>
+                                    <th>Names</th>
+                                    <th>Phone Number</th>
+                                    <th>Group</th>
+                                    <th *ngIf="!isSMS">Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody *ngIf="contactsList" class="panel panel-body" >
+                                <tr *ngFor="let con of contactsList | search: search_term ; let i=index">
+                                <!--<tr *ngFor="let con of contactsList let i=index">-->
+                                    <td><input [ngModel]="con.selected" [ngModelOptions]="{standalone: true}" type="checkbox" (change)="checkbox(con)"  ></td>
+                                    <td>{{con.names }}</td>
+                                    <td>{{con.phone_number}}</td>
+                                    <td *ngIf="con.group.length > 1">
+                                        <button (click)="get_contact($event, i)" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                                            View Groups
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog modal-sm" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Groups</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table  table-hover table-striped">
+                                                            <thead>
+                                                            <th>Names</th>
+                                                            </thead>
+                                                            <thead>
+                                                            <tr *ngFor="let grp of dicts">
+                                                                <th>{{grp.name}}</th>
+
+                                                            </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td *ngIf="con.group.length < 1">
+                                        {{con.group}}
+                                    </td>
+                                    <td *ngIf="con.group.length === 1">
+                                        {{con.group[0].name}}
+                                    </td>
+                                    <!--<td>{{con.group}}</td>-->
+                                    <td *ngIf="!isSMS" class="edit">
+                                        <button (click)="editContact($event, i)" class="btn btn-xs btn-warning"><span
+                                                class="glyphicon glyphicon-edit"></span> edit
+                                        </button>
+                                        <span (click)="deleteContactView($event, i)" class="btn btn-xs btn-danger fa fa-trash-o"></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody *ngIf="!contactsList">
+                                    <loading-indicator></loading-indicator>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6"><b>{{contacts_count}} Contacts</b></div>
+                        <div *ngIf="!isSMS" [ngSwitch]="buttonStateEnabled" class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                            <button *ngSwitchCase="true" (click)="downloadContacts($event)" class="btn btn-success">
+                                <span class="glyphicon glyphicon-download"></span> Download Selected
+                            </button>
+
+                            <button *ngSwitchCase="false" disabled (click)="downloadContacts($event)" class="btn btn-success">
+                                <span class="glyphicon glyphicon-download"></span> Download Selected
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><b>Filter by Group</b></div>
+                        <div>
+                            <ul>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a (click)="get_contacts('checker')" class="list-group-item">All</a>
+                                    </div>
+
+                                </div>
+                            </ul>
+                            <ul  *ngFor="let group of groups; let i=index">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a (click)="getGroupIds(group.id)" class="list-group-item" id={{group.id}} >
+                                            {{group.name}}
+                                        </a>
+                                    </div>
+                                    <div *ngIf="!isSMS" class="col-md-2" style="margin-left: 5%">
+                                        <button (click)="deleteGroupView($event, i)" type="button" class="btn btn-danger fa fa-trash-o"> Delete</button>
+                                    </div>
+                                </div>
+                                <!--<button (click)="getGroupContact(group.id)" class="list-group-item" *ngFor="let group of groups">-->
+                                    <!--{{group.name}}-->
+                                <!--</button>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="airtime">
+    <div [ngSwitch]="isRequesting">
+        <div *ngSwitchCase="true">
+            <div class="spinnerDiv2">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-muted"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div *ngSwitchCase="false">
+            <div *ngIf="airtime">
+                <form *ngIf="!send_airtime_spinner">
+                    <div class="panel panel-body">
+                    <div class="alert alert-dismissable alert-danger" [hidden]="!index_errors">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <p>{{index_errors}}</p>
+
+                    </div>
+                    <div class="alert alert-dismissable alert-danger" [hidden]="!phone_number_error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <p>{{phone_number_error}}</p>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+                        <div class="input-group col-lg-6">
+                            <input placeholder="Enter Airtime Amount to Update" aria-describedby="basic-addon2" class="form-control" #typedVal type="number" (change)="typedAmout(typedVal.value)">
+                            <span class="input-group-addon btn" id="basic-addon2">Update Airtime Amount</span>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+
+                                <th>Names</th>
+                                <th>Phone Number</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="info" *ngFor="let choice of topup; let i = index">
+                                <td>
+
+                                    <input [(ngModel)]="choice.first_name" [ngModelOptions]="{standalone: true}" maxlength="255" type="text"/>
+                                </td>
+                                <td>
+                                    <input [(ngModel)]="choice.phone_number" [ngModelOptions]="{standalone: true}" maxlength="255" type="text" required pattern="^(?:07|\+2547)[0-9]{8}$" />
+                                </td>
+                                <td>
+                                    <input (keyup)="total_transaction()" [(ngModel)]="choice.amount" [ngModelOptions]="{standalone: true}" maxlength="20" type="number"/>
+                                </td>
+                                <td><a class="delete-row" (click)="removeChoice(i)">remove</a></td>
+                            </tr>
+                            <a style="margin: 13px" class="add-row" (click)="addNewChoice()">add another</a>
+                            <div style="margin: 23px"></div>
+                            <div class="alert alert-info" role="alert" >
+                                Total amount you are sending {{totals}}
+                            </div>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="alert alert-info" [hidden]="!message_warn">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <p>{{message_warn}}</p>
+
+                    </div>
+                </div>
+                </form>
+                <div *ngIf="send_airtime_spinner" >
+                    <loading-indicator></loading-indicator>
+                </div>
+                <!--<button *ngIf="deactivate" (click)="warning($event)"  class='form-control btn btn-primary submit-button'-->
+                        <!--type="submit">Send Airtime-->
+                <!--</button>-->
+
+                <button (click)="sendContactsAirtime()" *ngIf="!send_airtime_spinner" id="bulk-send" class='form-control btn btn-primary submit-button'
+                        type="submit">Send Airtime
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="message_page">
+    <div [ngSwitch]="isRequesting">
+        <div *ngSwitchCase="true">
+            <div class="spinnerDiv2">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-muted"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div *ngSwitchCase="false">
+            <div class="row panel panel-body">
+                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 column">
+                    <div class="alert alert-dismissable alert-danger" [hidden]="!amount_error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <p>{{amount_error}}</p>
+
+                    </div>
+                    <div class="alert alert-dismissable alert-danger" [hidden]="!phone_number_error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <p>{{phone_number_error}}</p>
+
+                    </div>
+
+                    <!--<div class="alert alert-dismissable alert-danger" [hidden]="!index_errors">-->
+                    <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+
+                    <!--<p>{{index_errors}}</p>-->
+
+                    <!--</div>-->
+                    <form id="myForm" #f="ngForm">
+                        <div class="well">
+                            <div class="ui form">
+                                <div class="field">
+                                    <label>Message</label>
+                                    <textarea class='form-control' #message (keyup)="character_counter(message.value)"
+                                              value={{user_message}} placeholder="Write something..." id="message" value="" name="message" required></textarea>
+                                </div>
+                            </div>
+                            <!--<span id="characters">0</span>-->
+                            <span><small>You've typed {{characters_typed}} characters. You'll be charged <code><b>KES. {{charge}}</b></code> for 1 number</small></span>
+                            <div class="checkbox">
+                                <label for="dontReply">
+                                    <input (click)="attachDontReply(message.value)" type="checkbox" id="dontReply">Attach
+                                    "DON'T REPLY" at the end of the
+                                    SMS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="attachUsername">
+                                    <input (click)="attachUsername(message.value)" type="checkbox"
+                                           id="attachUsername">Attach <code><b>{{userName|lowercase}}</b></code> at
+                                    the end of the
+                                    SMS
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label  " for="sender_id">Sender Identification</label>
+                               <div class=" ">
+                                   <select #sender_value  class=" form-control" id="sender_id" name="sender">
+                                       <option *ngFor="let sender_id of sender_id_list">{{sender_id}}</option>
+                                   </select>
+                               </div>
+                        </div>
+                        <div class="panel panel-default well table-responsive">
+                            <h3>Recipients Details</h3>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Names</th>
+                                    <th>Phone Number</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="info" *ngFor="let choice of topup; let i = index">
+                                    <td>
+
+                                        <input [(ngModel)]="choice.first_name" [ngModelOptions]="{standalone: true}" maxlength="255" type="text"/>
+                                    </td>
+                                    <td>
+                                        <label></label>
+                                        <input [(ngModel)]="choice.phone_number" [ngModelOptions]="{standalone: true}" maxlength="255" type="text" required pattern="^(?:07|\+2547)[0-9]{8}$"/>
+                                    </td>
+                                    <td><a class="delete-row" (click)="removeChoice(i)">remove</a></td>
+                                </tr>
+                                <a class="add-row" (click)="addNewChoice()">add another</a>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </form>
+                    <button
+                            (click)="sendMessage($event, message.value, sender_value.value)" class='form-control btn btn-primary submit-button'>Send
+                    </button>
+                    <hr>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="edit_contact">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+
+            <h1 class="page-header">
+                Contacts Update
+                <small>Update {{contact_value.names}}</small>
+            </h1>
+
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 col-md-12 col-xs-12 col-sm-12 column">
+            <form id="updateForm">
+                <div class="form-group">
+                    <div class="alert alert-dismissable alert-danger" [hidden]="!index_errors">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <p>{{index_errors}}</p>
+
+                    </div>
+                    <div class="alert alert-dismissable alert-danger" [hidden]="!phone_number_error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <p>{{phone_number_error}}</p>
+
+                    </div>
+                    <div class="alert alert-dismissable alert-danger" [hidden]="!name_error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <p>{{name_error}}</p>
+
+                    </div>
+                    <label class="control-label  " for="id_names">Names</label>
+                    <div class=" ">
+                        <input class=" form-control" id="id_names" maxlength="255" [ngModelOptions]="{standalone: true}" type="text"
+                               [(ngModel)]="contact_value.names"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  " for="id_phone_number">Phone number</label>
+                    <div class=" ">
+                        <input class=" form-control" id="id_phone_number" maxlength="20" [ngModelOptions]="{standalone: true}" type="text"
+                               [(ngModel)]="contact_value.phone_number" required pattern="^(?:07|\+2547)[0-9]{8}$"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <!--<label class="control-label  " for="id_group">Group</label>-->
+                    <div class=" ">
+                        <select-group [groups]="groups" [selectedValues]="contact_value.group" (selected_values)="handleSelectedValues($event)"></select-group>
+                    </div>
+                </div>
+            </form>
+            <button *ngIf="!edit_progress" (click)="updateContact(group_nam)" id="update" class='form-control btn btn-primary submit-button' type='submit'>Update</button>
+            <div *ngIf="edit_progress" >
+                <loading-indicator></loading-indicator>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="delete_contact_page">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+
+            <h1 class="page-header">
+                Contacts Delete
+            </h1>
+            <notifications></notifications>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-3 col-md-3 col-xs-12 col-sm-12 column"></div>
+            <div class="col-md-6 col-md-6 col-xs-12 col-sm-12 column">
+                <div class="panel panel-default">
+                    <div class="panel-body">Are you sure you want to delete {{contact_value.phone_number}}?</div>
+                    <div class="panel-footer">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <button (click)="resetDelete()" type="button" class="btn btn-secondary">CANCEL</button>
+                            <button (click)="deleteContact(contact_value.pk)" type="button" class="btn btn-danger">YES, DELETE IT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-3 col-md-3 col-xs-12 col-sm-12 column"></div>
+    </div>
+</div>
+
+<div *ngIf="delete_group_page">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+
+            <h1 class="page-header">
+                Group Delete
+            </h1>
+            <notifications></notifications>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-3 col-md-3 col-xs-12 col-sm-12 column"></div>
+        <div class="col-md-6 col-md-6 col-xs-12 col-sm-12 column">
+            <div class="panel panel-default">
+                <div class="panel-body">Are you sure you want to delete {{group_value.name}}?</div>
+                <div>
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Names</th>
+                            <th>Phone Number</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let contact of group_value.contacts">
+                            <td><input (click)="delete_group_contacts(contact.id)" type="checkbox"></td>
+                            <td>{{contact.names}}</td>
+                            <td>{{contact.phone_number}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        <button (click)="resetDelete()" type="button" class="btn btn-secondary">CANCEL</button>
+                        <button (click)="deleteGroup(group_value.id)" type="button" class="btn btn-danger">YES, DELETE IT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-3 col-xs-12 col-sm-12 column"></div>
+    </div>
+</div>

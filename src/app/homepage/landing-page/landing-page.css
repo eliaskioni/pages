@@ -1,0 +1,1040 @@
+/* general styles */
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* padded section */
+.pad-section {
+    padding: 50px 0;
+}
+
+.pad-section img {
+    width: 100%;
+}
+
+#button-separator {
+    color: #ffff00;
+}
+
+/* vertical-centered text */
+.text-vcenter {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vcenter h1 {
+    font-size: 2.5em;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+    color: white;
+    opacity: 0.8;
+}
+
+.text-vcenter h2 {
+    font-size: 2.5em;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.text-vcenter h3 {
+    opacity: 0.85;
+    font-size: 1.5em;
+    font-weight: 100;
+    color: white;
+}
+
+/* additional sections */
+#home {
+    background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#about {
+}
+
+
+.clients {
+    padding: 10px;
+    opacity: 0.95;
+    background-color: darkblue;
+    margin-top: auto;
+    height: auto;
+    width: 100%;
+}
+
+.footer-style {
+    opacity: 0.95;
+    height: auto;
+    width: 100%;
+}
+
+textarea:focus, input:focus {
+    color: black;
+}
+
+input, select, textarea {
+    color: black;
+}
+
+#services {
+    background-color: #306d9f;
+    color: #ffffff;
+}
+
+#services .glyphicon {
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 60px;
+    height: 140px;
+    line-height: 140px;
+    text-align: center;
+    vertical-align: middle;
+    width: 140px;
+}
+
+#why-us {
+    background-color: #306d9f;
+    color: #ffffff;
+    height: 100%;
+}
+
+#why-us .glyphicon {
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 60px;
+    height: 140px;
+    line-height: 140px;
+    text-align: center;
+    vertical-align: middle;
+    width: 140px;
+}
+
+#information {
+    background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+    display: table;
+    height: 800px;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#information .panel {
+    opacity: 0.85;
+    background-color: black;
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#information p {
+    color: white;
+    font-size: 0.8em;
+
+}
+
+#information .row .col-lg-10 {
+    margin-left: 5px;
+}
+
+#information img {
+    display: inline-block;
+    font-size: 60px;
+    height: 140px;
+    line-height: 140px;
+    text-align: center;
+    vertical-align: middle;
+    width: 140px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.space {
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+#contact {
+    background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+    display: table;
+    height: 800px;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#contact .panel {
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.54);
+}
+
+#contact .panel .panel-body {
+    font-size: 1.0em;
+}
+
+#google_map {
+    height: 460px;
+}
+
+footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #999;
+    padding: 20px 0;
+}
+
+footer a {
+    color: black;
+}
+
+footer a:hover {
+    color: blueviolet;
+}
+
+footer .glyphicon {
+    color: #333333;
+    font-size: 60px;
+}
+
+footer .glyphicon:hover {
+    color: #306d9f;
+}
+
+.about-page {
+    background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.about-page > .text-vcenter > .panel {
+    opacity: 0.9;
+    height: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 80px;
+}
+
+.about-page > .panel {
+    opacity: 0.9;
+    height: 80%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.pricing-1 {
+    color: #981CE6;
+    font-size: 350%;
+
+}
+
+.pricing-2 {
+    font-size: medium;
+    font-family: "Dosis", Serif, serif;
+    font-weight: bold;
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    .space {
+        margin: auto;
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    .space {
+        margin: auto;
+    }
+}
+
+.nav {
+    text-transform: uppercase;
+    font-size: small;
+    font-weight: bold;
+    /*font-family: "Ubuntu Condensed", monospace;*/
+    font-family: "Dosis", serif;
+}
+
+
+p, pre, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, ol, ul,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) {
+    /* padded section */
+    .pad-section {
+        padding: 50px 0;
+    }
+
+    .pad-section img {
+        width: 100%;
+    }
+
+    /* vertical-centered text */
+    .text-vcenter {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .text-vcenter h1 {
+        font-size: 2.5em;
+        font-weight: 200;
+        margin: 0;
+        padding: 0;
+        color: white;
+        opacity: 0.8;
+    }
+
+    .text-vcenter h2 {
+        font-size: 2.5em;
+        font-weight: 200;
+        margin: 0;
+        padding: 0;
+        color: white;
+    }
+
+    .text-vcenter h3 {
+        opacity: 0.85;
+        font-size: 1.5em;
+        font-weight: 100;
+        color: white;
+    }
+
+    /* additional sections */
+    #home {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #about {
+    }
+
+
+    .clients {
+        padding: 10px;
+        opacity: 0.95;
+        background-color: darkblue;
+        margin-top: auto;
+        height: auto;
+        width: 100%;
+    }
+
+    .footer-style {
+        opacity: 0.95;
+        height: auto;
+        width: 100%;
+    }
+
+    textarea:focus, input:focus {
+        color: black;
+    }
+
+    input, select, textarea {
+        color: black;
+    }
+
+    #services {
+        background-color: #306d9f;
+        color: #ffffff;
+    }
+
+    #services .glyphicon {
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        display: inline-block;
+        font-size: 60px;
+        height: 140px;
+        line-height: 140px;
+        text-align: center;
+        vertical-align: middle;
+        width: 140px;
+    }
+
+    #why-us {
+        background-color: #306d9f;
+        color: #ffffff;
+        height: 100%;
+    }
+
+    #why-us .glyphicon {
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        display: inline-block;
+        font-size: 60px;
+        height: 140px;
+        line-height: 140px;
+        text-align: center;
+        vertical-align: middle;
+        width: 140px;
+    }
+
+    #information {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 800px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #information .panel {
+        opacity: 0.85;
+        background-color: black;
+        width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #information p {
+        color: white;
+        font-size: 0.8em;
+
+    }
+
+    #information .row .col-lg-10 {
+        margin-left: 5px;
+    }
+
+    #information img {
+        display: inline-block;
+        font-size: 60px;
+        height: 140px;
+        line-height: 140px;
+        text-align: center;
+        vertical-align: middle;
+        width: 140px;
+        color: white;
+        margin-bottom: 40px;
+    }
+
+    .space {
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+
+    #contact {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 800px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #contact .panel {
+        width: 950px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(255, 255, 255, 0.54);
+    }
+
+    #contact .panel .panel-body {
+        font-size: 1.0em;
+    }
+
+    #google_map {
+        height: 460px;
+    }
+
+    footer {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background: #999;
+        padding: 20px 0;
+    }
+
+    footer a {
+        color: black;
+    }
+
+    footer a:hover {
+        color: blueviolet;
+    }
+
+    footer .glyphicon {
+        color: #333333;
+        font-size: 60px;
+    }
+
+    footer .glyphicon:hover {
+        color: #306d9f;
+    }
+
+    .about-page {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .about-page > .text-vcenter > .panel {
+        opacity: 0.9;
+        height: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 80px;
+    }
+
+    .about-page > .panel {
+        opacity: 0.9;
+        height: 80%;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .pricing-1 {
+        color: #981CE6;
+        font-size: 350%;
+
+    }
+
+    .pricing-2 {
+        font-size: medium;
+        font-family: "Dosis", Serif, serif;
+        font-weight: bold;
+
+    }
+
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 767px) {
+        .space {
+            margin: auto;
+        }
+    }
+
+    /* Landscape phones and down */
+    @media (max-width: 480px) {
+        .space {
+            margin: auto;
+        }
+    }
+
+    .nav {
+        text-transform: uppercase;
+        font-size: small;
+        font-weight: bold;
+        font-family: "Dosis", serif;
+    }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    /* padded section */
+    .pad-section {
+        padding: 50px 0;
+    }
+
+    .pad-section img {
+        width: 100%;
+    }
+
+    /* vertical-centered text */
+    .text-vcenter {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .text-vcenter h1 {
+        font-size: 2.5em;
+        font-weight: 200;
+        margin: 0;
+        padding: 0;
+        color: white;
+        opacity: 0.8;
+    }
+
+    .text-vcenter h2 {
+        font-size: 2.5em;
+        font-weight: 200;
+        margin: 0;
+        padding: 0;
+        color: white;
+    }
+
+    .text-vcenter h3 {
+        opacity: 0.85;
+        font-size: 1.5em;
+        font-weight: 100;
+        color: white;
+    }
+
+    /* additional sections */
+    #home {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #about {
+    }
+
+
+    .clients {
+        padding: 10px;
+        opacity: 0.95;
+        background-color: darkblue;
+        margin-top: auto;
+        height: auto;
+        width: 100%;
+    }
+
+    .footer-style {
+        opacity: 0.95;
+        height: auto;
+        width: 100%;
+    }
+
+    textarea:focus, input:focus {
+        color: black;
+    }
+
+    input, select, textarea {
+        color: black;
+    }
+
+    #services {
+        background-color: #306d9f;
+        color: #ffffff;
+    }
+
+    #services .glyphicon {
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        display: inline-block;
+        font-size: 60px;
+        height: 140px;
+        line-height: 140px;
+        text-align: center;
+        vertical-align: middle;
+        width: 140px;
+    }
+
+    #why-us {
+        background-color: #306d9f;
+        color: #ffffff;
+        height: 100%;
+    }
+
+    #why-us .glyphicon {
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        display: inline-block;
+        font-size: 60px;
+        height: 140px;
+        line-height: 140px;
+        text-align: center;
+        vertical-align: middle;
+        width: 140px;
+    }
+
+    #information {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 800px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #information .panel {
+        opacity: 0.85;
+        background-color: black;
+        width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #information p {
+        color: white;
+        font-size: 0.8em;
+
+    }
+
+    #information .row .col-lg-10 {
+        margin-left: 5px;
+    }
+
+    #information img {
+        display: inline-block;
+        font-size: 60px;
+        height: 140px;
+        line-height: 140px;
+        text-align: center;
+        vertical-align: middle;
+        width: 140px;
+        color: white;
+        margin-bottom: 40px;
+    }
+
+    .space {
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+
+    #contact {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 800px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #contact .panel {
+        width: 950px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(255, 255, 255, 0.54);
+    }
+
+    #contact .panel .panel-body {
+        font-size: 1.0em;
+    }
+
+    #google_map {
+        height: 460px;
+    }
+
+    footer {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background: #999;
+        padding: 20px 0;
+    }
+
+    footer a {
+        color: black;
+    }
+
+    footer a:hover {
+        color: blueviolet;
+    }
+
+    footer .glyphicon {
+        color: #333333;
+        font-size: 60px;
+    }
+
+    footer .glyphicon:hover {
+        color: #306d9f;
+    }
+
+    .about-page {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .about-page > .text-vcenter > .panel {
+        opacity: 0.9;
+        height: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 80px;
+    }
+
+    .about-page > .panel {
+        opacity: 0.9;
+        height: 80%;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .pricing-1 {
+        color: #981CE6;
+        font-size: 350%;
+
+    }
+
+    .pricing-2 {
+        font-size: medium;
+        font-family: "Dosis", Serif, serif;
+        font-weight: bold;
+
+    }
+
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 767px) {
+        .space {
+            margin: auto;
+        }
+    }
+
+    /* Landscape phones and down */
+    @media (max-width: 480px) {
+        .space {
+            margin: auto;
+        }
+    }
+
+    .nav {
+        text-transform: uppercase;
+        font-size: small;
+        font-weight: bold;
+        font-family: "Dosis", serif;
+    }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    #information {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 350px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #information .panel {
+        opacity: 0.85;
+        background-color: black;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    #information h3 {
+        color: white;
+        font-size: medium;
+        margin-top: 0px;
+    }
+
+    #information p {
+        color: white;
+        font-size: x-small;
+        margin-bottom: 10px;
+    }
+
+    /*#information .row .col-lg-10 {*/
+    /*margin-left: 5px;*/
+    /*}*/
+
+    #information img {
+        display: inline-block;
+        font-size: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        vertical-align: middle;
+        width: 60px;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    #contact {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 400px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #contact .panel {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(255, 255, 255, 0.54);
+    }
+
+    #contact .panel .panel-body {
+        font-size: 1.0em;
+    }
+
+    #google_map {
+        height: 230px;
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    #information {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 300px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #information .panel {
+        opacity: 0.85;
+        background-color: black;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    #information h3 {
+        color: white;
+        font-size: medium;
+        margin-top: 0;
+    }
+
+    #information p {
+        color: white;
+        font-size: x-small;
+        margin-bottom: 10px;
+    }
+
+    #information img {
+        display: inline-block;
+        font-size: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        vertical-align: middle;
+        width: 60px;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    #contact {
+        background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+        display: table;
+        height: 400px;
+        position: relative;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #contact .panel {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(255, 255, 255, 0.54);
+    }
+
+    #contact .panel .panel-body {
+        font-size: 1.0em;
+    }
+
+    #google_map {
+        height: 230px;
+    }
+}
+

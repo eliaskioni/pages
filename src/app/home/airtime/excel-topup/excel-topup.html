@@ -1,0 +1,132 @@
+<div [ngSwitch]="isRequesting">
+    <div *ngSwitchCase="true">
+        <div class="spinnerDiv2">
+            <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-muted"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div *ngSwitchCase="false">
+        <div *ngIf="switch">
+            <div>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <h1 class="page-header">
+                            Excel Topup
+                            <small>Use an excel file with the details for the airtime amount and numbers to send to
+                            </small>
+                        </h1>
+
+                    </div>
+                </div>
+                <div class="row well">
+                    <p>The excel file should contain three columns </p>
+                    <ol>
+                        <li>The first column contains the name -> its optional</li>
+                        <li>the second column contains the phone number -> its compulsory</li>
+                        <li>the third column contains the amount to send which should be greater than 10</li>
+                    </ol>
+                    <p><b><h5>Example: </h5></b> <strong>James | 254702729654 | 10 </strong></p>
+                    <b>NOTE: </b> Your phone number column should begin with <strong>2547xxxxxxxx</strong>, <strong>+2547xxxxxxxx</strong>
+                    or <strong>07xxxxxxxx</strong>
+                    <div class="alert alert-dismissable alert-danger" [hidden]="!excel_error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <p>{{excel_error}}</p>
+
+                    </div>
+
+                    <p> To get a sample excel file click <a href="/static_files/excel-files/bulk_excel_topup.xlsx"> here </a>
+                        to download
+                    </p>
+                    <div class='col-md-12 form-group'>
+                        <form accept-charset="UTF-8" action="" enctype="multipart/form-data" method="post"><input type='hidden'
+                                                                                                                  name='csrfmiddlewaretoken'
+                                                                                                                  value='FUMcf34Ba6yOgsVAmyr0EilgDZFeFczL'/>
+
+                            <div class='form-row'>
+                                <div class='col-xs-12 form-group required '>
+
+
+                                    <label class='control-label'><b>Upload your excel file</b></label>
+                                    <input id="id_file" (change)="fileChangeEvent($event)" name="file" type="file"/>
+                                </div>
+                                <p>Your uploaded excel file will be shown to you in a preview you can edit.</p>
+                            </div>
+                            <div class='form-row'>
+                                <div class='col-md-12 form-group'>
+                                    <hr class="featurette-divider"/>
+                                    <button id="upload" class='form-control btn btn-primary submit-button' (click)="upload()" >Upload
+                                        Excel
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class='col-md-4'></div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!switch">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <h1 class="page-header">
+                        Excel Topup Preview
+                        <small>Preview the uploaded contacts</small>
+                    </h1>
+
+                </div>
+            </div>
+            <form>
+                <div class="panel panel-body">
+                    <div class="alert alert-dismissable alert-danger" [hidden]="!index_errors">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <p>{{index_errors}}</p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Names</th>
+                                <th>Phone Number</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody *ngIf="!send_airtime_spinner">
+                            <tr class="info" *ngFor="let choice of topup; let i = index">
+                                <td >
+
+                                    <input [(ngModel)]="choice.first_name" [ngModelOptions]="{standalone: true}" maxlength="255" type="text"/>
+                                </td>
+                                <td [ngClass]="{'has-error': phone_number_error}">
+                                    <label class="badge-label label-danger" [hidden]="!phone_number_error">{{phone_number_error}}</label>
+                                    <input [(ngModel)]="choice.phone_number" [ngModelOptions]="{standalone: true}" maxlength="255" type="text" required pattern="^(?:07|\+2547)[0-9]{8}$"/>
+                                </td>
+                                <td [ngClass]="{'has-error': amount_error}">
+                                    <label class="control-label" [hidden]="!amount_error">{{amount_error}}</label>
+                                    <input (keyup)="total_transaction()" [(ngModel)]="choice.amount" [ngModelOptions]="{standalone: true}" maxlength="20" type="number"/>
+                                </td>
+                                <td><a class="delete-row" (click)="removeChoice(i)">remove</a></td>
+                            </tr>
+                            <a class="add-row" (click)="addNewChoice()">add another</a>
+                            <div class="alert alert-info" role="alert" >
+                                Total amount you are sending {{totals}}
+                            </div>
+                            </tbody>
+                            <tbody *ngIf="send_airtime_spinner">
+                            <loading-indicator></loading-indicator>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+
+            <button id="bulk-send" (click)="sendExcelAirtime()" class='form-control btn btn-primary submit-button' type="submit">Send Airtime
+            </button>
+
+        </div>
+    </div>
+</div>

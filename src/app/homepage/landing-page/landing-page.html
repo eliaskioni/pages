@@ -1,0 +1,91 @@
+<!-- first section - Home -->
+<div id="home" class="home">
+    <div class="text-vcenter">
+        <div class="span9">
+            <h1>Easy...<span class="space"></span> Fast...</h1>
+        </div>
+        <h3>Take Value!</h3>
+        <div *ngIf="!backendApis.check_if_logged_in()" class="btn-group">
+            <li>
+                <a routerLink="/homepage/login" class="btn btn-info btn-lg " id=" login-link">LOGIN</a>
+                <p class="btn btn-lg" id="button-separator"> OR </p>
+                <a routerLink="/homepage/sign-up" class="btn btn-info btn-lg " id="login-links">SIGN UP</a>
+            </li>
+        </div>
+
+    </div>
+</div>
+<!-- /first section -->
+
+
+<!-- second section - About -->
+<div id="about" class="pad-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="/static_files/media/homepage_files/tumacredoLogo (1).svg" alt="TumaCredo"/>
+            </div>
+            <div class="col-sm-9 text-center">
+                <h2>CONVENIENT AIRTIME TOPUP AND BULK SMS</h2>
+                <p class="lead">
+                    TumaCredo is a prodigy that came up after it was evident that organizations find themselves in surprise having spent above their budget.
+                    One of the most overlooked expenses is time which is incurred and accounted for in the financial accounts indirectly.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="span7 text-center">
+                    <a routerLink="/homepage/about_us" id="faq-link" class="btn btn-info">Read More About Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /second section -->
+
+<!-- third section - How To -->
+<how-to></how-to>
+
+
+<!-- fourth section - Why you should join us -->
+<div id="services" class="pad-section">
+    <div class="container">
+        <h2 class="text-center">Why You Should Join Us</h2>
+        <hr/>
+        <div class="row text-center">
+            <div class="col-sm-3 col-xs-6">
+                <span class="glyphicon glyphicon-flash"></span>
+                <h4>Quick Transanctions</h4>
+                <p>At TumaCredo, we believe that the faster your trasanction is executed, the better. And isn't
+                    it?</p>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <span class="glyphicon glyphicon-signal"></span>
+                <h4>Send to any Network</h4>
+                <p>Have you ever wondered how to do a bulk sms or airtime top up but there's the cross-network
+                    charges
+                    you don't like? We've levelled the ground</p>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                <h4>Easy To Use</h4>
+                <p>We keep tabs, day and night, to ensure the user experience at TumaCredo is as simple and precise
+                    as
+                    possible.</p>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <span class="glyphicon glyphicon-comment"></span>
+                <!-- <i class="glyphicon glyphicon-group-chat"> </i> -->
+                <h4>We'll get you Talking</h4>
+                <p>For your team, when it's an airtime top up or bulk sms, we'll get you talking</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- /fourth section -->
+
+<!-- google map and contact us-->
+<contact-us></contact-us>
+<!-- /google map -->

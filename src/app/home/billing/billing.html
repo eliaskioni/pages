@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-12">
+
+        <h1 class="page-header">
+            Billing
+            <small>Add credit to your account balance</small>
+        </h1>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <h4 class="text-info">We Currently support Lipa na M-PESA</h4>
+        <h3>MPesa instructions</h3>
+        <ol class="custom-bullet">
+            <li>Using your MPESA-enabled phone, select <code>Lipa na M-PESA</code> from the <code>M-PESA</code> menu.</li>
+            <li>Select the <code>Pay Bill</code> option.</li>
+            <li>Enter <code>Business Number</code>: <span class="text-info"><b><code style="font-size: large">525900</code></b></span></li>
+            <li *ngIf="!userData.username">Enter your <code>account ID</code> as your <code>Account Number</code>. Your account ID is: <span class="text-info"><b><code style="font-size: large"><i class="fa fa-spinner fa-pulse "></i>
+<span class="sr-only">Loading...</span></code></b></span></li>
+            <li *ngIf="userData.username">Enter your <code>account ID</code> as your <code>Account Number</code>. Your account ID is: <span class="text-info"><b><code style="font-size: large">{{userData.username}}.sla</code></b></span></li>
+            <li>Enter the <code>amount</code> of credit you want to buy for your account.</li>
+            <li>Confirm that all the details are correct and press <code>OK</code>.</li>
+            <li>You will receive an sms confirming deposit of the funds.</li>
+            <li>Your account will be updated immediately.</li>
+        </ol>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.notifications{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.notifications div {
+    border: 1px solid;
+    border-radius: 4px;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .22),
+    0 17px 20px 0 rgba(0, 0, 0, .12);
+    cursor: pointer;
+    margin-bottom: .5em;
+    min-height: 3em;
+    padding: 1em;
+    text-align: center;
+    width: 300px;
+}
+
+.notifications div .success {
+    background-color: cornflowerblue;
+    border-color: peachpuff;
+    color: whitesmoke;
+}
+
+.notifications div .warning {
+    background-color: #feefb3;
+    border-color: #feefb3;
+    color: darkolivegreen;
+}

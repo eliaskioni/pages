@@ -1,0 +1,33 @@
+frontend:
+  build: .
+  volumes:
+    - ./src:/usr/src/app/src
+  environment:
+    - 'VIRTUAL_HOST=http://*/*, https://*/*'
+    - VIRTUAL_HOST_WEIGHT=1
+  ports:
+    - 4200:80
+    - 49153:49153
+  command:  bash -c "cd /usr/src/app && ng build && ng serve --host 0.0.0.0 --port 80 --live-reload-port 49153"
+
+prod:
+  build: .
+  ports:
+    - 4201:80
+
+nginx:
+    build: .
+    ports:
+      - 4202:80
+
+node:
+  image: mwaaas/node-base:latest
+
+lb:
+  image: dockercloud/haproxy:1.2.1
+  links:
+    - frontend
+  ports:
+    - '8003:80'
+    - '443:443'
+    - '1936:1936'

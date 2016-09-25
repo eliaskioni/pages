@@ -1,0 +1,45 @@
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.complete{
+
+}
+
+.about-page {
+    background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    animation: bounceIn 2s;
+}
+
+.about-page > .text-vcenter > .panel {
+    opacity: 0.9;
+    height: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 80px;
+}
+
+.about-page > .panel {
+    opacity: 0.9;
+    height: 80%;
+    margin-left: 20px;
+    margin-right: 20px;
+}

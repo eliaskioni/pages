@@ -1,0 +1,114 @@
+<div [ngSwitch]="isRequesting">
+    <div *ngSwitchCase="true">
+        <div class="spinnerDiv2">
+            <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-muted"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div *ngSwitchCase="false">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+
+                <h1 class="page-header">
+                    Quick SMS
+                    <small>Send an SMS to one or more numbers</small>
+                </h1>
+
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'>
+                <div class='col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group'>
+                    <h4>From this interface, you can send an SMS to:</h4>
+                    <ul>
+                        <li>a single number</li>
+                        <li>multiple numbers</li>
+                    </ul>
+                    <h3>To send to a single number:</h3>
+                    <p>
+                        - enter the phone number in any of the formats i.e. starting with <strong>07XXXXXXXX or
+                        2547XXXXXXXXXX
+                        or +2547XXXXXXXX</strong>
+                    </p>
+                    <h3>To send to multiple phone numbers:</h3>
+                    <p>
+                        - enter the phone numbers in any of the formats above and separate them with <i>commas</i>(,) i.e
+                        <strong>07XXXXXXXX, 2547XXXXXXXXXX, +2547XXXXXXXX, ...</strong>
+                    </p>
+                </div>
+            </div>
+            <div class='col-lg-6 col-md-6 col-xs-12 col-sm-12 well'>
+                <div class='col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group'>
+                    <h1>Send a Quick SMS</h1>
+                    <hr class="featurette-divider"/>
+                    <form accept-charset="UTF-8" (submit)="send_message($event, phone_number.value, message.value, sender_value.value)">
+                        <div class="alert alert-dismissable alert-danger" [hidden]="!duplicates_error">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <em class="italic">This numbers have been repeated in the phone numbers list</em>
+
+                            <p *ngFor="let dup of duplicates_list">{{dup}}</p>
+
+                        </div>
+
+                        <div class='form-row'>
+                            <div class='col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group required ' [ngClass]="{'has-error': phone_number_error}">
+                                <label class='control-label'>Phone Number</label>
+
+                                <input class='form-control' #phone_number autofocus placeholder="07XXXXXXXX, 2547XXXXXXXX, ..." id="to"
+                                       name="to"
+                                       size='20' type='text' value={{phone_numbers}} required>
+                            </div>
+
+                        <div class='form-row'>
+                            <div class='col-xs-12 form-group card required '>
+                                <div class="ui form">
+                                    <div class="field">
+                                        <label>Message</label>
+                                        <textarea class='form-control' value={{user_message}} #message (keyup)="character_counter(message.value)" placeholder="Type your message here" id="message" name="message" required></textarea>
+                                        <!--<span id="characters">0</span>-->
+                                        <span><small>You've typed {{characters_typed}} characters. You'll be charged <code><b>KES. {{charge}}</b></code> for 1 number</small></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label  " for="sender_id">Sender Identification</label>
+                                    <div class=" ">
+                                        <select #sender_value  class=" form-control" id="sender_id" name="sender">
+                                           
+                                            <option *ngFor="let sender_id of sender_id_list">{{sender_id}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="dontReply">
+                                        <input (click)="attachDontReply(message.value)" type="checkbox" id="dontReply">Attach
+                                        "DON'T REPLY" at the end of the
+                                        SMS
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="attachUsername">
+                                        <input (click)="attachUsername(message.value)" type="checkbox"
+                                               id="attachUsername">Attach <code><b>{{userName|lowercase}}</b></code> at
+                                        the end of the
+                                        SMS
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                            <button class='form-control btn btn-primary submit-button' type='submit' id="upload">Send
+                            </button>
+                        </div>
+                    </form>
+                    <div class='form-row'>
+                        <div class='col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group'>
+                            <hr class="featurette-divider"/>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

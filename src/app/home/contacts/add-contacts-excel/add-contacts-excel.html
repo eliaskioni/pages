@@ -1,0 +1,77 @@
+<div><h1>Excel Contacts Upload</h1></div>
+<hr class="featurette-divider"/>
+<div *ngIf="switch"><p>To upload contacts in bulk using an excel sheet, you need to create an excel file with the following
+    format</p>
+    <p>It should have Two columns </p>
+    <ol>
+        <li>Name of the contact</li>
+        <li>Phone number of the contact</li>
+    </ol>
+    <p><h5><b>Example: </b></h5> Fredrick Lindegaard 25472123456
+    <b>NOTE: </b> Your phone number column should begin with <strong>2547xxxxxxxx, +2547xxxxxxxx or
+        07xxxxxxxx</strong>
+    <div class="alert alert-dismissable alert-danger" [hidden]="!excel_error">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+
+        <p>{{excel_error}}</p>
+
+    </div>
+    <p> To get a sample excel file click <a href="/static/sample_contacts.xls"> here </a>
+        to download
+    </p>
+</div>
+<form *ngIf="switch">
+
+    <div class='form-row'>
+        <div class='col-xs-12 form-group required '>
+
+
+            <label class='control-label'><b>Upload your excel file</b></label>
+            <input id="id_file" (change)="fileChangeEvent($event)" name="file" type="file"/>
+        </div>
+    </div>
+    <div class='form-row'>
+        <div class='col-md-12 form-group'>
+            <hr class="featurette-divider"/>
+            <button (click)="upload()" id="upload" class='form-control btn btn-primary submit-button' type='submit'>Upload</button>
+        </div>
+    </div>
+</form>
+
+
+<div *ngIf="!switch" class="row clearfix">
+    <div class="col-md-12 column">
+        <form (submit)="addContacts($event)">
+            <div class="alert alert-dismissable alert-danger" [hidden]="!phone_number_error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <p>{{phone_number_error}}</p>
+
+            </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Names</th>
+                    <th>Phone Number</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="info" *ngFor="let choice of contacts; let i = index">
+                    <td>
+                        <input [(ngModel)]="choice.names" [ngModelOptions]="{standalone: true}" maxlength="255" type="text"/>
+                    </td>
+                    <td [ngClass]="{'has-error': phone_number_error}">
+                        <input [(ngModel)]="choice.phone_number" [ngModelOptions]="{standalone: true}" maxlength="255" type="text" required/>
+                    </td>
+
+                </tr>
+                <hr>
+                </tbody>
+            </table>
+
+
+            <button class='form-control btn btn-primary submit-button' type='submit'>Create</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div [ngSwitch]="isRequesting">
+    <div *ngSwitchCase="true">
+        <div class="spinnerDiv2">
+            <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-muted"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div *ngSwitchCase="false"><div class='row'>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <h1 class="page-header">
+                    Quick Topup
+                    <small>Send airtime instantly to one or more numbers</small>
+                </h1>
+
+            </div>
+        </div>
+        <div class='col-lg-5 col-md-5'>
+            <p class="info">You can disburse to more than one phone number. Enter the number and press the <i>space
+                bar</i> to add
+                more numbers.<br><b>NOTE: <br></b> The accepted number formats are <code>07XX, 2547XX</code> and<code>
+                    +2547XX</code></p>
+        </div>
+        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+            <div class="alert alert-dismissable alert-danger" [hidden]="!index_errors">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p>{{errors["index"]}}</p>
+            </div>
+
+            <!--phone numbers-->
+            <div class="row">
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <label>Phone Numbers</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <div class="alert alert-dismissable alert-danger " [hidden]="!phone_number_error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <p>{{errors["phone_number"]}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                    <input required="required" placeholder="07XXXXXXXX" #phone_number
+                           id="phone_number" name="phone_number" class="form-control">
+                </div>
+            </div>
+
+            <!--topup amount-->
+            <div class="form-row">
+                <label>Amount</label>
+                <div class="alert alert-dismissable alert-danger " [hidden]="!amount_error">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <p>{{errors["amount"]}}</p>
+                </div>
+                <div class="input-group">
+                    <div class="input-group-addon">KSH</div>
+                    <input type="number" class="form-control" #amount id="amount" name="amount" min="10" value="10">
+                    <div class="input-group-addon">.00</div>
+                </div>
+            </div>
+            <!--submit topup-->
+            <div class='form-row'>
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center form-group'>
+                    <hr class="featurette-divider"/>
+                    <button type="submit" class="btn btn-primary"
+                            (click)="send_airtime($event, phone_number.value, amount.value)">Send Airtime
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class='col-lg-4 col-md-4'></div>
+    </div></div>
+</div>

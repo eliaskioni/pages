@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <h1 class="page-header">
+            SMS Report
+            <small>View a summary of all your SMS transactions</small>
+        </h1>
+
+    </div>
+</div>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><span
+            class="glyphicon glyphicon-list-alt"></span> Table</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><span
+            class="glyphicon glyphicon-equalizer"></span> Chart</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" selected class="tab-pane fade in active" id="profile">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <report-box (update)="search_report=$event"></report-box>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <date-search (update)="search_report=$event"></date-search>
+                <input class="form-control" type="text" name="daterange"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="panel panel-default table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>Phone Number</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                            <th>Names</th>
+                            <th>Date Sent</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let sms of sent_sms_list | search: search_report">
+                            <td>{{sms.phone_number}}</td>
+                            <td>{{sms.message}}</td>
+                            <td>{{sms.status}}</td>
+                            <td>{{sms.names}}</td>
+                            <td>{{sms.updated_at|formatDate}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+                <p><b>{{count}} Recipients</b></p>
+            </div>
+            <!--<div class="row">-->
+            <!--<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">-->
+            <!--<p *ngIf="!previous || next"><b>{{count}} SMS Recipients</b></p>-->
+            <!--</div>-->
+            <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                <a class="btn btn-success btn-sm" *ngIf="previous" (click)="previous_click_event($event)">Previous</a>
+                <small *ngIf="next || previous"><b>{{sent_sms_list.length}} of {{count}}</b></small>
+                <a class="btn btn-success btn-sm" *ngIf="next" (click)="next_click_event($event)">Next</a>
+            </div>
+            <!--</div>-->
+
+            <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+                <a class="btn btn-sm" (click)="download_message($event)"><img src="/static/img/csv_icon.png" title="Download CSV Report"/></a>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="messages">
+        <div class="panel">
+            <div class="panel-body">
+                <div id="chartContainer" style="width:1000px; height:600px;"></div>
+            </div>
+        </div>
+    </div>
+</div>

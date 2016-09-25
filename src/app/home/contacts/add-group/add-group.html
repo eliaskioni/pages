@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-lg-12">
+
+        <h1 class="page-header">
+            Contacts Group
+            <small>Add a new contact group</small>
+        </h1>
+
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <form (submit)="createnewGroup($event, name.value)">
+            <div class="alert alert-dismissable alert-danger" [hidden]="!error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <p>{{error}}</p>
+
+            </div>
+
+            <div class="form-group">
+
+
+                <label class="control-label  " for="id_name">Name</label>
+
+
+                <div class=" ">
+                    <input class=" form-control" id="id_name" maxlength="50" #name name="name" type="text" required/>
+
+
+                </div>
+
+            </div>
+
+
+            <button  (keyup)="onChange(name.value)" class='form-control btn btn-primary submit-button' type='submit'>Create</button>
+        </form>
+    </div>
+</div>

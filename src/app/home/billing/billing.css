@@ -1,0 +1,29 @@
+ol.custom-bullet {
+    list-style: none;
+}
+
+ol.custom-bullet > li {
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+ol.custom-bullet > li:first-child {
+    counter-reset: index;
+}
+
+ol.custom-bullet > li:before {
+    content: counter(index);
+    counter-increment: index;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(at 30% 30%, white, blueviolet 60%);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    text-align: center;
+    color: blue;
+    font-size: 18px;
+    line-height: 28px;
+    text-shadow: 1px 1px 1px white, -1px -1px 1px black;
+}

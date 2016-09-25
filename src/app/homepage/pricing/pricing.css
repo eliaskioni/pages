@@ -1,0 +1,39 @@
+.about-page {
+    background: url("/static_files/media/homepage_files/kicc_2.png") no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.about-page > .text-vcenter > .panel {
+    opacity: 0.9;
+    height: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 80px;
+}
+
+.about-page > .panel {
+    opacity: 0.9;
+    height: 80%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.pricing-1 {
+    color: #981CE6;
+    font-size: 350%;
+
+}
+
+.pricing-2 {
+    font-size: medium;
+    font-family: "Dosis", Serif, serif;
+    font-weight: bold;
+
+}

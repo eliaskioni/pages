@@ -1,0 +1,54 @@
+<div>
+    checker
+    <div class="row panel panel-body">
+        <div class="col-md-12 column">
+            <div class="alert alert-dismissable alert-danger" [hidden]="!index_errors">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <p>{{index_errors}}</p>
+
+            </div>
+            <form (submit)="sendMessage($event, textSubject.value)" id="myForm">
+                <div class="well">
+                    <textarea required class='form-control' #textSubject placeholder="Write something..." id="message"
+                              name="message" size='20'></textarea>
+                    <span id="characters">0</span>
+                </div>
+                <div class="panel panel-default well">
+                    <h3>Recipients Details</h3>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Names</th>
+                            <th>Phone Number</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="info" *ngFor="let choice of topup; let i = index">
+                            <td>
+
+                                <input value="{{choice}}" maxlength="255"
+                                       type="text"/>
+                            </td>
+                            <td [ngClass]="{'has-error': phone_number_error}">
+                                <label class="badge-label label-danger"
+                                       [hidden]="!phone_number_error">{{phone_number_error}}</label>
+                                <input maxlength="255"
+                                       type="text" required pattern="^(?:07|\+2547)[0-9]{8}$"/>
+                            </td>
+                            <td><a class="delete-row" (click)="removeChoice(i)">remove</a></td>
+                        </tr>
+                        <a class="add-row" (click)="addNewChoice()">add another</a>
+                        </tbody>
+                    </table>
+
+                </div>
+                <button type="submit">
+                        class='form-control btn btn-primary submit-button'>Send
+                </button>
+            </form>
+            <hr>
+        </div>
+
+    </div>
+</div>
